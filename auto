@@ -1,0 +1,43 @@
+import javax.swing.JOptionPane;
+
+public class auto {
+
+    private int velocidad;
+
+    public auto() {
+        this.velocidad = 0;
+    }
+
+    public void acelerar(int cantidad) {
+        this.velocidad += cantidad;
+        if (this.velocidad > 100) {
+            this.velocidad = 100;
+        }
+    }
+
+    public void frenar(int cantidad) {
+        this.velocidad -= cantidad;
+    }
+
+    public int getVelocidad() {
+        return this.velocidad;
+    }
+
+    public void acelerarConJOptionPane() {
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog("¿Cuántos km/h quieres acelerar?"));
+        this.acelerar(cantidad);
+    }
+
+    public void frenarConJOptionPane() {
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog("¿Cuántos km/h quieres frenar?"));
+        this.frenar(cantidad);
+    }
+
+    public static void main(String[] args) {
+        auto miAuto = new auto();
+        miAuto.acelerarConJOptionPane();
+        miAuto.frenarConJOptionPane();
+        int velocidadActual = miAuto.getVelocidad();
+        JOptionPane.showMessageDialog(null, "La velocidad actual es: " + velocidadActual + " km/h");
+    }
+}
